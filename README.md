@@ -1,4 +1,4 @@
-<h1>Sistema de contagem de listas</h1>
+<h1>Sistema de análise de Números</h1>
 
 <p>Projeto de manipulação e leitura de listas/arrays, integrando HTML, CSS e JS.<br>
 
@@ -11,6 +11,8 @@ Detalhamento das etapas realizadas:
   <li>Criado primeiramente a estrutura HTML</li>
   <li>criado e testado as etapas via JavaScript, de maneira linear(a cada implementação, testado)</li>
   <li>Feito a estilização do front;</li>
+  <li>Implementado as funções propostas de análise;</li>
+  <li>Adicionado botão reset</li>
 </ul>
 
 Propostas para implementações futuras:

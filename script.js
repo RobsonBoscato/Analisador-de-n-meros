@@ -1,11 +1,31 @@
 // PRECISO VERIFICAR O MOTIVO DE NÃO RESETAR O Nº NO CAMPO APÓS A FUNCTION START()
 
-var state = { lista: [], resultado: [] };
+var state = { lista: [] };
 
 function start() {
   addNumberToList();
   resetField();
-  console.log(state.lista);
+}
+function retorno() {
+  listResume = document.querySelector('#res');
+
+  const sum = state.lista.reduce((partialSum, a) => partialSum + a, 0);
+
+  listResume.innerHTML = `
+    Ao todo, a lista tem
+    <strong>${state.lista.length}</strong> números cadastrados;<br>
+
+    <br> O maior valor informado foi de
+    <strong>${Math.max(...state.lista)} </strong>  ;<br>
+
+    <br> O menor valor informado foi de
+    <strong>${Math.min(...state.lista)} </strong>  ;<br>
+
+    <br> Somando todos os valores, temos <strong>${sum}</strong>  ;<br>
+
+    <br> A média dos valores digitados é <strong>${
+      sum / state.lista.length
+    }</strong>  ;<br>`;
 }
 
 function addNumberToList() {
@@ -45,19 +65,3 @@ function numberTable(numberToShow) {
 
   list.appendChild(listReturn);
 }
-/* else {
-  for (let key in state.lista) {
-    if (newNumber == key) {
-      window.alert('[ERRO] Número já adicionado na lista.');
-      return;
-    }
-  }
-
-  if (newNumber) {
-    state.lista.push(newNumber);
-  }
-}
-console.log(state.lista);
-
-function retorno() {}
-*/
