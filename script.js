@@ -4,8 +4,8 @@ var state = { lista: [] };
 
 function start() {
   addNumberToList();
-  resetField();
 }
+
 function retorno() {
   listResume = document.querySelector('#res');
 
@@ -16,16 +16,18 @@ function retorno() {
     <strong>${state.lista.length}</strong> números cadastrados;<br>
 
     <br> O maior valor informado foi de
-    <strong>${Math.max(...state.lista)} </strong>  ;<br>
+    <strong>${Math.max(...state.lista)} </strong> ;<br>
 
     <br> O menor valor informado foi de
-    <strong>${Math.min(...state.lista)} </strong>  ;<br>
+    <strong>${Math.min(...state.lista)} </strong> ;<br>
 
-    <br> Somando todos os valores, temos <strong>${sum}</strong>  ;<br>
+    <br> Somando todos os valores, temos <strong>${sum}</strong> ;<br>
 
-    <br> A média dos valores digitados é <strong>${
-      sum / state.lista.length
-    }</strong>  ;<br>`;
+    <br> A média ficou de <strong>${(sum / state.lista.length)
+      .toFixed(2)
+      .replace('.', ',')}</strong> ;`;
+
+  resetButton();
 }
 
 function addNumberToList() {
@@ -34,11 +36,11 @@ function addNumberToList() {
   var numberToAdd = Number(numberToAdd.value);
 
   if (numberToAdd < 1 || numberToAdd > 100 || numberToAdd === '') {
-    console.error('[ERRO] Número inválido.');
+    window.alert('[ERRO] Número inválido.');
     return;
   }
   if (isNumberInList(numberToAdd)) {
-    console.error('[ERRO] Número já existente.', numberToAdd);
+    window.alert('[ERRO] Número já existente.', numberToAdd);
     return;
   }
   state.lista.push(numberToAdd);
@@ -53,9 +55,9 @@ function isNumberInList(numberToCheck) {
   return false;
 }
 
-function resetField() {
-  var numberToAdd = document.querySelector('#numbers');
-  numberToAdd.innerHTML = '';
+function resetButton() {
+  var resetButton = document.querySelector('#resetButton');
+  resetButton.disabled = false;
 }
 
 function numberTable(numberToShow) {
@@ -64,4 +66,12 @@ function numberTable(numberToShow) {
   listReturn.text = `Número ${numberToShow} adicionado.`;
 
   list.appendChild(listReturn);
+}
+
+function resetField() {
+  listResume = document.querySelector('#res');
+  listResume.innerHTML = '';
+  list = document.querySelector('#table');
+  list.innerHTML = '';
+  state.lista = [];
 }

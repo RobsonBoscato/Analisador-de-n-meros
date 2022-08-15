@@ -21,10 +21,18 @@
       </div>
       <br />
       <div id="box2">
-        <select name="" id="table" size="10"></select>
+        <select id="table" size="10">
+          <option>Digite um número acima.</option>
+        </select>
         <br />
         <input type="button" value="Finalizar" onclick="retorno()" />
-        <input type="button" value="Reset" disabled onclick="resetField()" />
+        <input
+          type="button"
+          id="resetButton"
+          value="Reset"
+          disabled
+          onclick="resetField()"
+        />
       </div>
       <br />
       <div id="res"></div>
