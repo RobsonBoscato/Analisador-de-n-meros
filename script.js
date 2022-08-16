@@ -1,12 +1,18 @@
 // PRECISO VERIFICAR O MOTIVO DE NÃO RESETAR O Nº NO CAMPO APÓS A FUNCTION START()
 
 var state = { lista: [] };
+var numberField = document.querySelector('#numbers');
 
 function start() {
   addNumberToList();
 }
 
 function retorno() {
+  if (state.lista.length == 0) {
+    window.alert('Adicione um número antes de finalizar');
+    return;
+  }
+
   listResume = document.querySelector('#res');
 
   const sum = state.lista.reduce((partialSum, a) => partialSum + a, 0);
@@ -32,7 +38,6 @@ function retorno() {
 
 function addNumberToList() {
   var numberToAdd = document.querySelector('#numbers');
-  numberToAdd.innerHTML = ' ';
   var numberToAdd = Number(numberToAdd.value);
 
   if (numberToAdd < 1 || numberToAdd > 100 || numberToAdd === '') {
@@ -45,6 +50,8 @@ function addNumberToList() {
   }
   state.lista.push(numberToAdd);
   numberTable(numberToAdd);
+  numberField.value = '';
+  numberField.focus();
 }
 
 function isNumberInList(numberToCheck) {
@@ -74,4 +81,6 @@ function resetField() {
   list = document.querySelector('#table');
   list.innerHTML = '';
   state.lista = [];
+  var resetButton = document.querySelector('#resetButton');
+  resetButton.disabled = true;
 }
